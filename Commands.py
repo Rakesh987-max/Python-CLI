@@ -1,7 +1,7 @@
 
 
-users = {}        # store username & password
-todos = {}        # store todos for each user
+users = {}        
+todos = {}        
 
 while True:
     print("\n--- MAIN MENU ---")
@@ -16,12 +16,12 @@ while True:
         username = input("Enter username: ")
 
         if username in users:
-            print("❌ Username already exists")
+            print(" Username already exists")
         else:
             password = input("Enter password: ")
             users[username] = password
             todos[username] = []      # empty todo list
-            print("✅ Registration successful")
+            print(" Registration successful")
 
     # LOGIN
     elif choice == "2":
@@ -29,7 +29,7 @@ while True:
         password = input("Enter password: ")
 
         if username in users and users[username] == password:
-            print("✅ Login successful")
+            print(" Login successful")
 
             # USER MENU
             while True:
@@ -45,12 +45,12 @@ while True:
                 if option == "1":
                     task = input("Enter task: ")
                     todos[username].append(task)
-                    print("✅ Task added")
+                    print(" Task added")
 
                 # VIEW TODOS
                 elif option == "2":
                     if not todos[username]:
-                        print("❌ No tasks found")
+                        print(" No tasks found")
                     else:
                         print("\nYour Tasks:")
                         for i, task in enumerate(todos[username], start=1):
@@ -59,7 +59,7 @@ while True:
                 # DELETE TODO
                 elif option == "3":
                     if not todos[username]:
-                        print("❌ No tasks to delete")
+                        print(" No tasks to delete")
                     else:
                         for i, task in enumerate(todos[username], start=1):
                             print(f"{i}. {task}")
@@ -67,25 +67,25 @@ while True:
                         num = int(input("Enter task number: "))
                         if 1 <= num <= len(todos[username]):
                             removed = todos[username].pop(num - 1)
-                            print(f"✅ Deleted: {removed}")
+                            print(f" Deleted: {removed}")
                         else:
-                            print("❌ Invalid number")
+                            print(" Invalid number")
 
                 # LOGOUT
                 elif option == "4":
-                    print("🔒 Logged out")
+                    print("Logged out")
                     break
 
                 else:
-                    print("❌ Invalid option")
+                    print("Invalid option")
 
         else:
-            print("❌ Invalid username or password")
+            print(" Invalid username or password")
 
     # EXIT
     elif choice == "3":
-        print("👋 Program exited")
+        print(" Program exited")
         break
 
     else:
-        print("❌ Invalid choice")
+        print(" Invalid choice")
